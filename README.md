@@ -1,7 +1,3 @@
 # Sprites sheet maker
 
-To run:
-
-```bash
-py main.py ./images output.png 512 4
-```
+To run, open the `run.bat` file (it just run `py main.py` in the terminal) then follow the instruction.
