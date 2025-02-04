@@ -11,7 +11,7 @@ def create_sprite_sheet(input_folder: str, output_file: str, sprite_size: int, s
     
     print("Sorted images by name:")
     for img in images:
-        print(img)  # Print each image path to verify the order
+        print(img)
 
     num_images = len(images)
     rows = math.ceil(num_images / sprites_per_row)
@@ -32,13 +32,16 @@ def create_sprite_sheet(input_folder: str, output_file: str, sprite_size: int, s
     print(f"Sprite sheet created and saved as {output_file}")
 
 if __name__ == "__main__":
-    import argparse
+    use_default = input("Do you want to use default input/output? (Y/n): ").strip().lower()
+    
+    if use_default == "n":
+        input_folder = input("Enter the input folder path: ").strip()
+        output_file = input("Enter the output file path: ").strip()
+    else:
+        input_folder = "images"
+        output_file = "output.png"
 
-    parser = argparse.ArgumentParser(description="Create a sprite sheet from images in a folder.")
-    parser.add_argument("input_folder", help="Path to the folder containing images.")
-    parser.add_argument("output_file", help="Path to save the sprite sheet image.")
-    parser.add_argument("sprite_size", type=int, help="Width and height of each sprite in pixels.")
-    parser.add_argument("sprites_per_row", type=int, help="Number of sprites per row in the sprite sheet.")
+    sprite_size = int(input("Enter the output sprite size (1:1, in pixels): "))
+    sprites_per_row = int(input("Enter the number of sprites per row in the output sprite sheet: "))
 
-    args = parser.parse_args()
-    create_sprite_sheet(args.input_folder, args.output_file, args.sprite_size, args.sprites_per_row)
+    create_sprite_sheet(input_folder, output_file, sprite_size, sprites_per_row)
